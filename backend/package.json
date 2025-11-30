@@ -4,7 +4,7 @@
   "description": "Az alkalmazás célja, hogy jelentős előnyt biztosítson a vállalkozásoknak a piaci jelenlét, az ügyfélszolgálat és a hatékonyság tekintetében, miközben biztonságos, gyors és kényelmes vásárlási élményt teremt az ügyfelek számára.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
     "dev": "nodemon src/app.js"
   },
   "repository": {
