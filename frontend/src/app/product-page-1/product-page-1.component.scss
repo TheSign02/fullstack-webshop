@@ -1,0 +1,246 @@
+.product-page-1_12-477 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #eff2f6;
+  width: 100%;
+  height: 95vh;
+  font-family: Inter, sans-serif;
+}
+
+.container {
+  display: block;
+  width: 80%;
+  height: fit-content;
+  float: left;
+  margin-left: 6em;
+  margin-top: 4.5em;
+}
+
+.imageContainer {
+  display: block;
+  float: left;
+  width: 47%;
+  aspect-ratio: 1;
+}
+
+.textContainer {
+  margin-top: 2em;
+  display: block;
+  float: right;
+  width: 47%;
+  aspect-ratio: 1;
+}
+
+.rectangle-8_12-480 {
+  display: flex;
+}
+
+.image-2_12-481 {
+  display: flex;
+}
+
+.image-3_12-482 {
+  display: flex;
+}
+
+.textName {
+  position: relative;
+  display: block;
+  color: #000000;
+  font-size: clamp(3rem, 4vw, 4rem); // Responsive font size
+  line-height: 1.3;
+  letter-spacing: -3%;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: left;
+  text-wrap: wrap;
+}
+
+.textPrice {
+  position: relative;
+  display: block;
+  color: #000000;
+  font-size: clamp(2rem, 2.5vw, 3rem); // Responsive font size
+  line-height: 1.5;
+  letter-spacing: -3%;
+  text-decoration: none;
+  font-weight: 400;
+  text-align: left;
+  text-wrap: wrap;
+}
+
+.textDesc {
+  position: relative;
+  display: block;
+  color: #000000;
+  font-size: clamp(1.5rem, 2vw, 1.5rem); // Responsive font size
+  line-height: 1.5;
+  letter-spacing: -3%;
+  text-decoration: none;
+  font-weight: 400;
+  text-align: left;
+  text-wrap: wrap;
+}
+
+.textHeight {
+  position: relative;
+  display: block;
+  color: #888888;
+  font-weight: 400;
+  text-align: left;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  text-wrap: wrap;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.sizeSelector {
+  aspect-ratio: 7 / 2;
+  border: 1px solid black;
+  border-radius: 0.1em;
+  width: 35%;
+  text-align: left;
+  font-size: clamp(2rem, 1.5vw, 1.5rem);
+  padding-left: 0.5em;
+  font-weight: 300;
+  margin-left: 1.1em;
+  background-color: white;
+  transition: 0.5s;
+}
+
+.sizeSelector:hover {
+  transition: 0.5s;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.amount {
+  display: flex;
+  float: left;
+  aspect-ratio: 7 / 2;
+  border: 1px solid black;
+  border-radius: 0.1em;
+  width: 35%;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 1.5vw, 1.5rem);
+  font-weight: 300;
+  position: relative;
+  background-color: white;
+  transition: 0.5s;
+}
+
+.amount:hover {
+  transition: 0.5s;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.2);
+}
+
+div .amountButton {
+  all: unset;
+  position: absolute;
+  color: #999999;
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2.5rem, 1.5vw, 1.5rem);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+div .amountButton:first-of-type {
+  left: 0.5em;
+}
+
+div .amountButton:last-of-type {
+  right: 0.5em;
+}
+
+.amountValue {
+  font-size: clamp(2rem, 1.5vw, 1.5rem);
+  padding-top: 0.2em;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.buy {
+  aspect-ratio: 3/1;
+  border-radius: 0.5;
+  box-shadow: none;
+  color: white;
+  background-color: #176eef;
+  border: solid 1.5px #176eef;
+  font-weight: 500;
+  width: 25%;
+  font-size: clamp(1.5rem, 1.5vw, 1.5rem);
+  transition: 0.3s;
+}
+
+.buy:hover {
+  box-shadow: inset 0 4vw 0.4em #05fc74;
+  background-color: #04ef5d;
+  border: solid 1.5px #04ef5d;
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 1s ease-out,
+    border 0.3s ease-out,
+    text-shadow 0.3s ease-out,
+    font-size 0.3s;
+}
+
+.buy:active {
+  font-size: clamp(1.45rem, 1.5vw, 1.55rem);
+  box-shadow:
+    inset 0 4vw 0.4em rgba(255, 255, 255, 0.1),
+    0 0 0 0.05em #04ef5d;
+  transition: 0.1s ease;
+}
+
+.addToCart {
+  aspect-ratio: 23/5;
+  border-radius: 0.5;
+  box-shadow: none;
+  color: white;
+  background-color: black;
+  border: solid 1.5px black;
+  font-weight: 500;
+  width: 48%;
+  font-size: clamp(1.5rem, 1.5vw, 1.5rem);
+  transition: 0.3s;
+}
+
+.addToCart:hover {
+  box-shadow: inset 20vw 0 0.1em #176eef;
+  background-color: #1262d7;
+  border: solid 1.5px #1262d7;
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 1s ease-out,
+    border 0.3s ease-out,
+    text-shadow 0.3s ease-out,
+    font-size 0.3s;
+}
+
+.addToCart:active {
+  font-size: clamp(1.45rem, 1.5vw, 1.55rem);
+  box-shadow:
+    inset 0 20vw 0.1em rgba(255, 255, 255, 0.1),
+    0 0 0 0.05em #1262d7;
+  transition: 0.1s ease;
+}

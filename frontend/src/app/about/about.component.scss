@@ -1,0 +1,286 @@
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.aboutHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid #f0f0f0;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+  }
+
+  .introText {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.pagesOverview {
+  margin-bottom: 60px;
+
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000;
+  }
+
+  .overviewIntro {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+  }
+}
+
+.pagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.pageCard {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 30px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #d0d0d0;
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 15px;
+  }
+
+  .pageDescription {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+
+  .routeBadge {
+    display: inline-block;
+    background: #000;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+}
+
+.featuresSection {
+  background: #fff8f3;
+  padding: 40px;
+  border-radius: 8px;
+  margin-bottom: 60px;
+
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #000;
+  }
+
+  .featuresList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 16px;
+      color: #555;
+      padding: 15px 0;
+      padding-left: 30px;
+      position: relative;
+      border-bottom: 1px solid #ffe6d9;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #ff6b35;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      strong {
+        color: #000;
+      }
+    }
+  }
+}
+
+.techSection {
+  background: #f0f4f8;
+  padding: 40px;
+  border-radius: 8px;
+  margin-bottom: 60px;
+
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000;
+  }
+
+  p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+  }
+}
+
+.ctaSection {
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 40px;
+  border-radius: 8px;
+
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.8;
+  }
+
+  .link {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutContainer {
+    padding: 20px 15px;
+  }
+
+  .aboutHeader {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .introText {
+      font-size: 16px;
+    }
+  }
+
+  .pagesOverview {
+    h2 {
+      font-size: 28px;
+    }
+  }
+
+  .pagesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .featuresSection,
+  .techSection,
+  .ctaSection {
+    padding: 30px 20px;
+  }
+
+  .featuresSection h2,
+  .techSection h2,
+  .ctaSection h2 {
+    font-size: 28px;
+  }
+
+  .ctaSection {
+    padding: 40px 20px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutContainer {
+    padding: 15px 10px;
+  }
+
+  .aboutHeader {
+    h1 {
+      font-size: 24px;
+    }
+
+    .introText {
+      font-size: 14px;
+    }
+  }
+
+  .pagesOverview h2,
+  .featuresSection h2,
+  .techSection h2,
+  .ctaSection h2 {
+    font-size: 22px;
+  }
+
+  .pageCard {
+    padding: 20px;
+
+    h3 {
+      font-size: 18px;
+    }
+
+    .pageDescription {
+      font-size: 13px;
+    }
+  }
+
+  .featuresSection .featuresList li {
+    font-size: 14px;
+    padding-left: 25px;
+  }
+
+  .techSection p,
+  .ctaSection p {
+    font-size: 14px;
+  }
+}

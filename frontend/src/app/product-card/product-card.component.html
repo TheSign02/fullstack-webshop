@@ -1,0 +1,18 @@
+<div class="product-card_12-3" (click)="navigateToProduct()" style="cursor: pointer">
+  <div class="product-image_12-4">
+    @if (product != null) {
+      <img [src]="product.imageUrl" [alt]="product.title" />
+    } @else {
+      <ng-template #placeholderImage>
+        <div
+          class="svg-replacement styled-svg bg-c4c4c4"
+          style="width: 400px; height: 400px"
+          aria-hidden="true"
+        ></div>
+      </ng-template>
+    }
+  </div>
+  <span class="text-product-title_12-5">{{ product?.title || 'Product Name' }}</span>
+  <span class="text-product-price_12-6">${{ product?.price || '0' }}</span>
+  <span class="text-product-size_12-7">{{ product?.category || 'M' }}</span>
+</div>

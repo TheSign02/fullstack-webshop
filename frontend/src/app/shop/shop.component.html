@@ -1,0 +1,55 @@
+<div class="shopContainer">
+  <!-- Header Section -->
+  <div class="shopHeader">
+    <h1 class="shopTitle">Shop Men’s</h1>
+    <p class="shopSubtitle">
+      Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly
+      curated wardrobe thanks to our line-up of timeless pieces.
+    </p>
+  </div>
+  <div class="shopContent">
+    <!-- Filter and Sort Section -->
+    <div class="controlsSection">
+      <div class="categories">
+        @for (cat of categories; track cat) {
+          <button
+            class="categoryBtn"
+            (click)="setCategory(cat)"
+            [class.active]="selectedCategory === cat"
+          >
+            {{ cat }}
+          </button>
+        }
+      </div>
+      <div class="sortDropdown">
+        <span class="sortLabel">Sort By:</span>
+        <select
+          #sortSelect
+          class="sortSelect"
+          (change)="setSort(sortSelect.value)"
+          [value]="sortOption"
+        >
+          <option value="Most Popular">Most Popular</option>
+          <option value="Price: Low to High">Price: Low to High</option>
+          <option value="Price: High to Low">Price: High to Low</option>
+          <option value="Newest First">Newest First</option>
+        </select>
+        <span class="productCount">Showing {{ productList.length }} products</span>
+      </div>
+    </div>
+    <!-- Products Grid -->
+    <div class="productsGridWrapper">
+      <div class="productsGrid">
+        @for (product of filteredProducts; let i = $index; track product.id) {
+          @if (product.isFeatured) {
+            <app-product-card
+              class="productCardWrapper featured"
+              [product]="product"
+              [id]="product.id"
+            ></app-product-card>
+          }
+        }
+      </div>
+    </div>
+  </div>
+</div>

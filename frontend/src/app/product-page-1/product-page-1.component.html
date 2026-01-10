@@ -1,0 +1,53 @@
+<div class="product-page-1_12-477">
+  <div class="container">
+    <div class="imageContainer">
+      <div class="image-2_12-481">
+        @if (getSelectedProduct()) {
+          <img
+            [src]="getSelectedProduct()?.imageUrl"
+            [alt]="getSelectedProduct()?.title"
+            style="width: 100%; aspect-ratio: 1; object-fit: cover"
+          />
+        } @else {
+          <img
+            [src]="productList[id].imageUrl"
+            [alt]="productList[id].title"
+            style="width: 100%; aspect-ratio: 1; object-fit: cover"
+          />
+        }
+      </div>
+    </div>
+    <div class="textContainer">
+      <span class="textName">{{ productList[id].title }}</span>
+      @if (getSelectedProduct()) {
+        <span class="textPrice">$ {{ getSelectedProduct()?.price }}</span>
+        <span class="textDesc">
+          {{ getSelectedProduct()?.description }}
+        </span>
+      } @else {
+        <span class="textPrice">$ {{ productList[id].price }}</span>
+        <span class="textDesc">
+          {{ productList[id].description }}
+        </span>
+      }
+      <div class="amount">
+        <button (click)="decrement()" class="amountButton">−</button>
+        <span class="amountValue">{{ quantity() }}</span>
+        <button (click)="increment()" class="amountButton">+</button>
+      </div>
+      <select [value]="selectedItem()" (change)="onChange($event)" class="sizeSelector">
+        @if (selectedItem() === '') {
+          <option value="" selected="selected">- None -</option>
+        }
+        @for (product of filterItemsByName(productList[id].title); track product.id) {
+          <option [value]="product.id">{{ product.size }}</option>
+        }
+      </select>
+      <span class="textHeight">Height of model: 189 cm. / 6′ 2″ Size 41</span>
+      <div class="buttonContainer">
+        <button (click)="addToCart()" class="addToCart">Add to Cart - ${{ sumCost() }}</button>
+        <button (click)="buyNow()" class="buy">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>

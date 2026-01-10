@@ -1,0 +1,132 @@
+
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+/* Global responsive styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+
+  @media (max-width: 1200px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Use clamp for responsive sizing */
+@function clamp-size($min, $mid, $max) {
+  @return clamp($min, $mid, $max);
+}
+
+/* Styled SVGs: consistent padding, margin and optional border */
+.styled-svg {
+  display: inline-block;
+  padding: clamp(0.125rem, 0.6vw, 0.75rem);
+  margin: clamp(0.125rem, 0.6vw, 0.75rem);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  vertical-align: middle;
+  background: transparent;
+  max-width: 100%;
+  height: auto; /* preserve intrinsic aspect ratio */
+}
+
+@media (max-width: 480px) {
+  .styled-svg {
+    padding: 0.125rem;
+    margin: 0.125rem;
+    border-radius: 4px;
+  }
+}
+
+/* Replacement elements for removed inline SVGs */
+.svg-replacement {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Utility background / border classes to imitate simple SVG rects/lines */
+.bg-c4c4c4 { background-color: #C4C4C4 !important; }
+.bg-black { background-color: #000 !important; }
+.bg-white { background-color: #fff !important; }
+.border-0d0d0d { border: 1px solid #0D0D0D !important; }
+.line-opaque { height: 1px; background: rgba(255,255,255,0.5); }
+
+/* Small icon placeholder used for small path-based SVGs */
+.icon-placeholder {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  min-width: 16px;
+  min-height: 16px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  .svg-replacement { padding: 0.25rem 0; }
+}

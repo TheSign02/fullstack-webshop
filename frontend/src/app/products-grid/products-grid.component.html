@@ -1,0 +1,46 @@
+<div class="shopContainer">
+  <div class="shopContent">
+    <!-- Filter and Sort Section -->
+    <div class="controlsSection">
+      <div class="categories">
+        @for (cat of categories; track cat) {
+          <button
+            class="categoryBtn"
+            (click)="setCategory(cat)"
+            [class.active]="selectedCategory === cat"
+          >
+            {{ cat }}
+          </button>
+        }
+      </div>
+
+      <div class="sortDropdown">
+        <span class="sortLabel">Sort By:</span>
+        <select
+          #sortSelect
+          class="sortSelect"
+          (change)="setSort(sortSelect.value)"
+          [value]="sortOption"
+        >
+          <option value="Most Popular">Most Popular</option>
+          <option value="Price: Low to High">Price: Low to High</option>
+          <option value="Price: High to Low">Price: High to Low</option>
+          <option value="Newest First">Newest First</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="productsGridWrapper">
+      <div class="productsGrid">
+        @for (product of filteredProducts; let i = $index; track product.id) {
+          <app-product-card
+            class="productCardWrapper"
+            [product]="product"
+            [id]="product.id"
+          ></app-product-card>
+        }
+      </div>
+    </div>
+  </div>
+</div>
