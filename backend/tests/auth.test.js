@@ -143,11 +143,13 @@ describe('Auth + Users', () => {
     expect(Array.isArray(res.body.users)).toBe(true);
   });
 
-  it('Google auth endpoints return 501', async () => {
+  it('Google auth endpoints return 302 when configured (else 501)', async () => {
     const res1 = await request(getApp()).get('/api/auth/google');
     const res2 = await request(getApp()).get('/api/auth/google/callback');
 
-    expect(res1.statusCode).toBe(501);
-    expect(res2.statusCode).toBe(501);
+    const configured = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
+
+    expect(res1.statusCode).toBe(configured ? 302 : 501);
+    expect(res2.statusCode).toBe(configured ? 302 : 501);
   });
 });

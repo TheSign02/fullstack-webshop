@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { verifyToken } from '../middleware/auth.js';
-import { loginUser, logoutUser, googleAuth, googleCallback } from '../controllers/authController.js';
+import passport from 'passport';
+import { loginUser, logoutUser } from '../controllers/authController.js';
+import { generateToken } from '../utils/token.js';
+import { isGoogleOAuthConfigured } from '../config/passport.js';
 
 const router = Router();
 
@@ -50,26 +53,68 @@ router.post('/logout', verifyToken, logoutUser);
  * @openapi
  * /api/auth/google:
  *   get:
- *     summary: Start Google OAuth flow (not yet configured)
+ *     summary: Start Google OAuth flow
  *     tags:
  *       - Auth
  *     responses:
- *       501:
- *         description: Not implemented
+ *       302:
+ *         description: Redirects to Google
  */
-router.get('/google', googleAuth);
 
 /**
  * @openapi
  * /api/auth/google/callback:
  *   get:
- *     summary: Google OAuth callback (not yet configured)
+ *     summary: Google OAuth callback
  *     tags:
  *       - Auth
  *     responses:
- *       501:
- *         description: Not implemented
+ *       302:
+ *         description: Redirects to frontend with a JWT
  */
-router.get('/google/callback', googleCallback);
+
+const getFrontendRedirectUrl = () => {
+
+  const frontendOrigin = process.env.FRONTEND_ORIGIN || 'http://localhost:4200';
+  return process.env.FRONTEND_OAUTH_REDIRECT || `${frontendOrigin}/login-oauth`;
+};
+
+router.get('/google', (req, res, next) => {
+
+  if (!isGoogleOAuthConfigured()) {
+    return res.status(501).json({ message: 'Google OAuth not configured yet' });
+  }
+
+  return passport.authenticate('google', {
+    scope: ['profile', 'email'],
+    session: false,
+    state: true,
+    prompt: 'select_account',
+  })(req, res, next);
+});
+
+router.get(
+
+  '/google/callback',
+  (req, res, next) => {
+    if (!isGoogleOAuthConfigured()) {
+      return res.status(501).json({ message: 'Google OAuth callback not configured yet' });
+    }
+
+    return passport.authenticate('google', {
+      session: false,
+      failureRedirect: `${getFrontendRedirectUrl()}?oauth=failed`,
+    })(req, res, next);
+  },
+  (req, res) => {
+    const token = generateToken(req.user);
+
+    const redirectUrl = new URL(getFrontendRedirectUrl());
+    redirectUrl.searchParams.set('token', token);
+    redirectUrl.searchParams.set('provider', 'google');
+
+    res.redirect(redirectUrl.toString());
+  }
+);
 
 export default router;

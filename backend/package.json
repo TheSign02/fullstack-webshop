@@ -23,16 +23,22 @@
   "homepage": "https://github.com/TheSign02/fullstack-webshop#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "express-session": "^1.18.2",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^9.0.0",
     "morgan": "^1.10.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@types/express-session": "^1.18.2",
+    "@types/passport": "^1.0.17",
     "eslint": "^9.39.1",
     "jest": "^30.2.0",
     "mongodb-memory-server": "^10.2.0",

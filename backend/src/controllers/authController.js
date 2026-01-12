@@ -29,11 +29,3 @@ export const loginUser = async (req, res) => {
 export const logoutUser = async (_req, res) => {
   res.json({ message: 'Logged out' });
 };
-
-export const googleAuth = (_req, res) => {
-  res.status(501).json({ message: 'Google OAuth not configured yet' });
-};
-
-export const googleCallback = (_req, res) => {
-  res.status(501).json({ message: 'Google OAuth callback not configured yet' });
-};
