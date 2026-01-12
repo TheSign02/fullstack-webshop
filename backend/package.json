@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "seed": "node src/scripts/seed.js",
+    "seed:reset": "node src/scripts/seed.js --reset"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,9 @@
   "devDependencies": {
     "eslint": "^9.39.1",
     "jest": "^30.2.0",
+    "mongodb-memory-server": "^10.2.0",
     "nodemon": "^3.1.11",
-    "supertest": "^7.1.4"
+    "supertest": "^7.1.4",
+    "tslib": "^2.8.1"
   }
 }
