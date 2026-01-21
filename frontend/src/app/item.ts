@@ -1,3 +1,10 @@
+export interface ResponseItems {
+  items: Item;
+  page: number;
+  limit: number;
+  total: number;
+}
+
 export interface Item {
   title: string;
   description: string;

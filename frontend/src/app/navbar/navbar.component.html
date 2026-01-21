@@ -3,11 +3,34 @@
     <a routerLink="/login-email" class="textNavLinks">Login</a>
   </div>
   <div class="leftNavFrame">
-    <a routerLink="/" class="textHome">Brand</a>
+    <a routerLink="/" class="textHome">HydroHub</a>
     <a routerLink="/shop" class="textNavLinks">Shop</a>
     <a routerLink="/about" class="textNavLinks">About</a>
     <div class="group-6_5-140">
-      <span class="textNavSearch">Search</span>
+      <span class="textNavSearch">
+        <input
+          #navSearchInput
+          class="navSearchInput"
+          type="search"
+          placeholder="Search products..."
+          (input)="onSearchChange($any($event.target).value)"
+          (keydown)="onKeyDown($event)"
+          [value]="search()"
+          aria-label="Search products"
+        />
+
+        <div class="navSearchSuggestions" *ngIf="suggestions().length">
+          <div
+            class="navSuggestionItem"
+            *ngFor="let s of suggestions(); let i = index; trackBy: trackById"
+            (click)="selectSuggestion(s)"
+            [attr.data-index]="i"
+            [class.highlight]="highlighted() === i"
+          >
+            {{ s.title }}
+          </div>
+        </div>
+      </span>
     </div>
   </div>
 </div>

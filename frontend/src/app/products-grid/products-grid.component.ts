@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { httpResource } from '@angular/common/http';
 import { ProductCardComponent } from '../product-card/product-card.component';
-import { Item, ItemWithID } from '../item';
+import { Item, ItemWithID, ResponseItems } from '../item';
 
 @Component({
   selector: 'app-products-grid',
@@ -12,13 +12,17 @@ import { Item, ItemWithID } from '../item';
   imports: [ProductCardComponent],
 })
 export class ProductsGridComponent {
-  productList = httpResource<Item[]>(() => ({
+  productList = httpResource<ResponseItems>(() => ({
     url: `http://localhost:5000/api/products`,
     method: 'GET',
   }));
 
+  productsSignal = computed(() => this.productList.value()?.items ?? []);
+
   get products(): Item[] {
-    return this.productList.value() ?? [];
+    const val = this.productsSignal();
+    console.log('Loaded products:', val);
+    return Array.isArray(val) ? val : [];
   }
   // UI state
   selectedCategory = 'All';

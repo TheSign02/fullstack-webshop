@@ -246,14 +246,14 @@
   width: 80%;
   aspect-ratio: 5/2;
   aria-hidden: true;
-  background-color: #c4c4c4 !important;
+  /* background-color: #c4c4c4 !important; */
   display: block;
   box-sizing: border-box;
   max-width: 100%;
   background-size: cover;
   background-position: center;
   display: inline-block;
-  padding: clamp(0.125rem, 0.6vw, 0.75rem);
+  /* padding: clamp(0.125rem, 0.6vw, 0.75rem); */
   margin: clamp(0.125rem, 0.6vw, 0.75rem);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 1px;

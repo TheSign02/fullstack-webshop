@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { httpResource } from '@angular/common/http';
 import { ProductCardComponent } from '../product-card/product-card.component';
-import { Item, ItemWithID } from '../item';
+import { Item, ItemWithID, ResponseItems } from '../item';
 
 @Component({
   selector: 'app-shop',
@@ -12,15 +12,21 @@ import { Item, ItemWithID } from '../item';
   imports: [ProductCardComponent],
 })
 export class ShopComponent {
-  productList = httpResource<Item[]>(() => ({
+  productList = httpResource<ResponseItems>(() => ({
     url: `http://localhost:5000/api/products`,
     method: 'GET',
   }));
 
+  productsSignal = computed(() => this.productList.value()?.items ?? []);
+
   get products(): Item[] {
-    const val = this.productList.value();
+    const val = this.productsSignal();
     console.log('Loaded products:', val);
     return Array.isArray(val) ? val : [];
+  }
+
+  printProducts() {
+    console.log('Products:', typeof this.products);
   }
 
   // UI state
@@ -29,6 +35,7 @@ export class ShopComponent {
 
   // compute available categories from data (keeps template simple)
   get categories(): string[] {
+    console.log(this.printProducts());
     const set = new Set(this.products.map((p: Item) => p.category));
     return ['All', ...Array.from(set)];
   }
