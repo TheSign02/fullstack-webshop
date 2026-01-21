@@ -101,13 +101,17 @@ router.get(
       return res.status(501).json({ message: 'Google OAuth callback not configured yet' });
     }
 
+    console.log('Query params:', req.query);
+    console.log('Session:', req.session);
     return passport.authenticate('google', {
       session: false,
       failureRedirect: `${getFrontendRedirectUrl()}?oauth=failed`,
     })(req, res, next);
   },
   (req, res) => {
+    console.log('req.user in callback:', req.user);
     const token = generateToken(req.user);
+    console.log('OAuth token:', token);
 
     const redirectUrl = new URL(getFrontendRedirectUrl());
     redirectUrl.searchParams.set('token', token);
