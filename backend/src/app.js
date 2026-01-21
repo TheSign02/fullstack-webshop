@@ -12,6 +12,7 @@ import authRouter from './routes/auth.js';
 import ordersRouter from './routes/orders.js';
 import categoriesRouter from './routes/categories.js';
 import cartRouter from './routes/cart.js';
+import paymentsRouter from './routes/payments.js';
 import cors from 'cors';
 import session from 'express-session';
 import passport from 'passport';
@@ -32,6 +33,8 @@ app.use(cors({
   origin: process.env.FRONTEND_ORIGIN || 'http://localhost:4200',
   credentials: true
 }));
+
+app.use('/api/payments', paymentsRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);

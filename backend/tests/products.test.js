@@ -41,6 +41,7 @@ describe('Products API', () => {
       title: 'Test Product',
       description: 'Desc',
       price: 9.99,
+      size: "Large",
       category: 'Electronics',
       imageUrl: 'NONE',
       stock: 5,
@@ -86,6 +87,7 @@ describe('Products API', () => {
         title: 'Premium Coffee Mug',
         description: 'Ceramic mug, 350ml',
         price: 12.5,
+        size: "Small",
         category: 'Home & Kitchen',
         imageUrl: 'NONE',
         stock: 42,
@@ -118,9 +120,9 @@ describe('Products API', () => {
 
   it('GET /api/products/search filters by q and category', async () => {
     await Product.create([
-      { title: 'Red T-Shirt', price: 9.99, category: 'Fashion', imageUrl: 'NONE', stock: 10 },
-      { title: 'Blue T-Shirt', price: 9.99, category: 'Fashion', imageUrl: 'NONE', stock: 10 },
-      { title: 'Kitchen Knife', price: 19.99, category: 'Home & Kitchen', imageUrl: 'NONE', stock: 5 },
+      { title: 'Red T-Shirt', price: 9.99, size: "Small", category: 'Fashion', imageUrl: 'NONE', stock: 10 },
+      { title: 'Blue T-Shirt', price: 9.99, size: "Medium", category: 'Fashion', imageUrl: 'NONE', stock: 10 },
+      { title: 'Kitchen Knife', price: 19.99, size: "Large", category: 'Home & Kitchen', imageUrl: 'NONE', stock: 5 },
     ]);
 
     const res1 = await request(getApp()).get('/api/products/search?q=t-shirt');
