@@ -41,13 +41,13 @@
     <div class="productsGridWrapper">
       <div class="productsGrid">
         @for (product of filteredProducts; let i = $index; track product.id) {
-          @if (product.isFeatured) {
-            <app-product-card
-              class="productCardWrapper featured"
-              [product]="product"
-              [id]="product.id"
-            ></app-product-card>
-          }
+          <!--@if (product.isFeatured) {-->
+          <app-product-card
+            class="productCardWrapper featured"
+            [product]="product"
+            [id]="product.id"
+          ></app-product-card>
+          <!--}-->
         }
       </div>
     </div>

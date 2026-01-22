@@ -1,13 +1,19 @@
 <div class="login---email_12-248">
-  <div class="ui-components---login---sign-in-with-social">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onLogin()"
+    class="ui-components---login---sign-in-with-social"
+  >
     <span class="text-login-via-OAuth" [routerLink]="['/login-oauth']"
       ><span class="underline">Login via OAuth</span></span
     >
     <span class="text-welcome-back_12-255">Welcome Back</span>
+
     <div class="frame-29_12-256">
-      <input type="email" placeholder="Email" class="inputField" />
-      <input type="password" placeholder="Password" class="inputField" />
+      <input type="email" formControlName="email" placeholder="Email" class="inputField" />
+      <input type="password" formControlName="password" placeholder="Password" class="inputField" />
     </div>
+
     <div class="links-container">
       <a class="forgotPasswd" [routerLink]="['/reset-passwd']"
         ><span class="underline">Forgot Password?</span></a
@@ -16,9 +22,13 @@
         ><span class="underline">Or create an account</span></a
       >
     </div>
+
     <div class="checkbox-container">
-      <span class="rememberMe" (click)="toggleCheckbox()">Remember me</span>
-      <input type="checkbox" class="checkboxStayLoggedIn" #checkboxStayLoggedIn />
+      <div>
+        <span class="rememberMe" (click)="toggleCheckbox()">Remember me</span>
+        <input type="checkbox" class="checkboxStayLoggedIn" #checkboxStayLoggedIn />
+      </div>
+      <button type="submit" [disabled]="loginForm.invalid" class="login-button">Login</button>
     </div>
-  </div>
+  </form>
 </div>

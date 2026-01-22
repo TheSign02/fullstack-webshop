@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { ProductsGridComponent } from './products-grid/products-grid.component';
 import { ResetPasswd } from './reset-passwd/reset-passwd.component';
+import { AdminDashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', component: Hero01Component },
@@ -21,5 +22,6 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductPage1Component },
   { path: 'shop', component: ShopComponent },
   { path: 'shop-all', component: ProductsGridComponent },
+  { path: 'dashboard', component: AdminDashboardComponent },
   { path: '**', redirectTo: '' },
 ];

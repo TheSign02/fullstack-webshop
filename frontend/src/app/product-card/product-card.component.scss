@@ -116,6 +116,19 @@
   align-items: flex-end;
 }
 
+.product-label-wrapper {
+  display: flex; /* Align items in a row */
+  justify-content: space-between; /* Push first to left, second to right */
+  width: 100%; /* Ensure it stretches across the card */
+  align-items: center; /* Keep text vertically centered */
+  box-sizing: border-box;
+}
+
+.size-right {
+  text-align: right;
+  color: #707070;
+}
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .product-card_12-3 {

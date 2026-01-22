@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { httpResource } from '@angular/common/http';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { Item, ItemWithID, ResponseItems } from '../item';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-shop',
@@ -12,6 +13,14 @@ import { Item, ItemWithID, ResponseItems } from '../item';
   imports: [ProductCardComponent],
 })
 export class ShopComponent {
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.checkServerSession().subscribe({
+      next: () => console.log('Session restored via cookie'),
+      error: () => console.log('No active session found'),
+    });
+  }
   productList = httpResource<ResponseItems>(() => ({
     url: `http://localhost:5000/api/products`,
     method: 'GET',

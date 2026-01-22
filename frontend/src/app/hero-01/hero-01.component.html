@@ -1,16 +1,29 @@
 <div class="hero01">
   <div class="image">
     <div class="image-placeholder">
-      <img
+      <!--<img
         src="https://i.ibb.co/40rrwBG/57044-tolle-natur-und-wasser-hintergrundbilder-1920x1080.jpg"
         alt="57044-tolle-natur-und-wasser-hintergrundbilder-1920x1080"
-        style="width: 100%"
-      />
+        style="width: 100%; border-radius: 1em; filter: blur(4px); background: cover"
+      />-->
     </div>
   </div>
   <div class="text-slogan">Stocked up. Refreshed. Ready.</div>
   <div class="content">
     <button class="shopAll" routerLink="/shop-all">Shop All</button>
+    <div class="productsGridWrapper" #scrollContainer (wheel)="onWheel($event)">
+      <div class="productsGrid">
+        @for (product of filteredProducts; let i = $index; track product.id) {
+          @if (product.isFeatured) {
+            <app-product-card
+              class="productCardWrapper featured"
+              [product]="product"
+              [id]="product.id"
+            ></app-product-card>
+          }
+        }
+      </div>
+    </div>
   </div>
 </div>
 

@@ -1,6 +1,10 @@
 <div class="navbar">
   <div class="rightNavFrame">
-    <a routerLink="/login-email" class="textNavLinks">Login</a>
+    @if (isLoggedIn$ | async) {
+      <a role="button" tabindex="0" (click)="onLogout()" class="textNavLinks"> Logout </a>
+    } @else {
+      <a routerLink="/login-email" class="textNavLinks">Login</a>
+    }
   </div>
   <div class="leftNavFrame">
     <a routerLink="/" class="textHome">HydroHub</a>
@@ -13,24 +17,24 @@
           class="navSearchInput"
           type="search"
           placeholder="Search products..."
-          (input)="onSearchChange($any($event.target).value)"
-          (keydown)="onKeyDown($event)"
-          [value]="search()"
-          aria-label="Search products"
+          [(ngModel)]="searchText"
+          (input)="filterItems()"
         />
-
-        <div class="navSearchSuggestions" *ngIf="suggestions().length">
-          <div
-            class="navSuggestionItem"
-            *ngFor="let s of suggestions(); let i = index; trackBy: trackById"
-            (click)="selectSuggestion(s)"
-            [attr.data-index]="i"
-            [class.highlight]="highlighted() === i"
-          >
-            {{ s.title }}
+        @if (showDropdown) {
+          <div class="navSearchSuggestions">
+            @for (item of filteredItems; let i = $index; track trackById($index, item)) {
+              <div class="navSuggestionItem" (click)="selectItem(item)" [attr.data-index]="i">
+                {{ item.title }}
+              </div>
+            }
           </div>
-        </div>
+        }
       </span>
     </div>
+    @if (isLoggedIn$ | async) {
+      @if (user$.role == 'admin') {
+        <a routerLink="/dashboard" class="textNavLinks">Dashboard</a>
+      }
+    }
   </div>
 </div>

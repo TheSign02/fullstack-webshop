@@ -14,5 +14,8 @@
   </div>
   <span class="text-product-title_12-5">{{ product?.title || 'Product Name' }}</span>
   <span class="text-product-price_12-6">${{ product?.price || '0' }}</span>
-  <span class="text-product-size_12-7">{{ product?.category || 'M' }}</span>
+  <span class="text-product-size_12-7 product-label-wrapper">
+    <span>{{ product?.category || 'M' }}</span>
+    <span class="size-right">{{ product?.size || 'M' }}</span>
+  </span>
 </div>
