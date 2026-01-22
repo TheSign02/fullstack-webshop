@@ -1,0 +1,80 @@
+<div class="dashboard-wrapper">
+  <aside class="admin-sidebar">
+    <nav class="admin-nav">
+      <button
+        class="nav-item"
+        [class.active]="activeTab === 'products'"
+        (click)="activeTab = 'products'; viewMode = 'list'"
+      >
+        Products
+      </button>
+      <button
+        class="nav-item"
+        [class.active]="activeTab === 'categories'"
+        (click)="activeTab = 'categories'; viewMode = 'list'"
+      >
+        Categories
+      </button>
+    </nav>
+  </aside>
+
+  <section class="admin-content">
+    <div class="view-header">
+      <h2>{{ activeTab | titlecase }} Management</h2>
+      @if (viewMode === 'list') {
+        <button class="action-btn-primary" (click)="openCreateForm()">+ Create New</button>
+      }
+    </div>
+
+    @if (viewMode === 'list') {
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th class="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of products; track item.id) {
+              <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price | currency }}</td>
+                <td class="text-right">
+                  <button class="text-btn" (click)="openEditForm(item)">Edit</button>
+                  <button class="text-btn delete" (click)="deleteItem(item.id)">Delete</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+
+    @if (viewMode === 'form') {
+      <div class="form-card">
+        <h3>{{ editingId ? 'Edit' : 'Create' }} {{ activeTab }}</h3>
+
+        <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+          <div class="form-group">
+            <label>Name</label>
+            <input formControlName="name" type="text" placeholder="Enter name" />
+          </div>
+
+          <div class="form-group">
+            <label>Price</label>
+            <input formControlName="price" type="number" />
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="form-button" (click)="viewMode = 'list'">Cancel</button>
+            <button type="submit" class="form-button" [disabled]="productForm.invalid">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    }
+  </section>
+</div>
